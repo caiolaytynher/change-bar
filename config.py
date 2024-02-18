@@ -9,7 +9,7 @@ class Config:
 
 
 config = Config(
-    theme="tokyonight",
+    theme="onedark",
     wallpapers={
         "gruvbox": {
             "normal": Path.home()

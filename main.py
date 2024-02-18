@@ -1,6 +1,6 @@
 import sys
 
-from bars import change_bar
+from bars import apply_changes
 from config import config
 
 
@@ -13,7 +13,7 @@ def main(args: list[str]):
     if bar not in config.wallpapers[config.theme]:
         raise ValueError("Not a valid bar.")
 
-    change_bar(bar, config)
+    apply_changes(bar, config)
 
 
 if __name__ == "__main__":

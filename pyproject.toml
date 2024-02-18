@@ -1,2 +1,2 @@
 [tool.pyright]
-include = ['bars', 'handle_files', 'config']
+include = ['bars', 'file_updating', 'config']

@@ -1,13 +1,7 @@
 import re
-from pathlib import Path
 
 
-def update_file(filepath: Path, content: str):
-    with open(filepath, "w") as file:
-        file.write(content)
-
-
-def apply_changes(
+def update_str(
     content: str,
     replacements: list[tuple[str, str]],
 ) -> str:

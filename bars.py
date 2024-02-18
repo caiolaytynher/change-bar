@@ -1,11 +1,11 @@
 from pathlib import Path
 from subprocess import Popen
 
-from handle_files import update_file, apply_changes
+from file_updating import update_str
 from config import Config
 
 
-def change_bar(bar: str, config: Config):
+def apply_changes(bar: str, config: Config):
     files: list[Path] = [
         Path.home() / ".config/qtile/config.py",
         Path.home() / ".config/qtile/components/groups.py",
@@ -45,11 +45,9 @@ def change_bar(bar: str, config: Config):
     ]
 
     for file, replacement in zip(files, replacements):
-        new_file_content: str = apply_changes(
-            content=file.read_text(), replacements=replacement
+        file.write_text(
+            update_str(content=file.read_text(), replacements=replacement)
         )
-
-        update_file(file, new_file_content)
 
     Popen(["/usr/bin/qtile", "cmd-obj", "-o", "cmd", "-f", "restart"])
     Popen(["/usr/bin/feh", "--bg-fill", config.wallpapers[config.theme][bar]])
